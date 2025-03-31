@@ -34,6 +34,8 @@ Este projeto foi desenvolvido como parte de um teste técnico e envolve a extra�
 
 ````bash
 git clone https://github.com/seu-usuario/teste-de-nivelamento.git
+````
+
 
 ## 🏗️ Criando o Ambiente Virtual no Python
 
@@ -41,12 +43,13 @@ Antes de instalar as dependências do projeto, é recomendado criar um ambiente 
 
 ### 📌 Criando o ambiente virtual:
 
+````bash
 Execute o seguinte comando no terminal dentro do diretório do projeto:
 
-```bash
 python -m venv venv
 source venv/bin/activate  # Para Linux/macOS
 venv\Scripts\activate     # Para Windows
+````
 
 ## 📦 Instalando as Dependências
 
@@ -58,15 +61,18 @@ Certifique-se de que o ambiente virtual esteja ativado antes de instalar as depe
 
 ```bash
 pip install flask mysql-connector-python pandas beautifulsoup4 requests flask-cors
+````
 
 ### Criar o Banco de Dados MySQL
 
 Acesse o MySQL
 ```bash
 mysql -u root -p
+````
 
 ## Crie o bando de dados e tabelas
 
+```bash
 Create DATABASE test_db;
 USE test_db;
 
@@ -86,15 +92,49 @@ CREATE TABLE despesas_operadoras (
     vl_saldo_final DECIMAL(18,2),
     data DATE
 );
+````
 
 ### Configurar o Backend
+
+```bash
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
     'password': 'sua_senha',
     'database': 'test_db'
 }
+````
+
+## 📥 **Populando o Banco de Dados**
+
+Para preencher a base de dados com informações reais, utilize o script importar_csv.py.
+
+### **Sobre o script**
+O script importar_csv.py lê os arquivos .csv que contêm os dados de despesas das operadoras e insere essas informações no banco de dados MySQL. Ele:
+
+- Abre cada arquivo CSV localizado no diretório banco_de_dados/
+- Faz a conversão de valores para o formato correto (ex: substituindo vírgulas por pontos em valores monetários)
+- Insere os dados na tabela despesas_operadoras
+
+### **Como executar**
+
+ **Configure o arquivo .env** na raiz do projeto com as credenciais do banco:
+   
+env
+   DB_HOST=localhost
+   DB_USER=root
+   DB_PASSWORD=sua_senha
+   DB_NAME=test_db
+
+   ### Execute o script de importação:
+
+   ```bash
+    python importar_csv.py
+   ```
+
 
 ### Rodando o Backend
+
+```bash
 python app.py
 ````
