@@ -45,7 +45,8 @@ Execute o seguinte comando no terminal dentro do diretório do projeto:
 
 ```bash
 python -m venv venv
-source venv/bin/activate
+source venv/bin/activate  # Para Linux/macOS
+venv\Scripts\activate     # Para Windows
 
 ## 📦 Instalando as Dependências
 
@@ -93,4 +94,7 @@ DB_CONFIG = {
     'password': 'sua_senha',
     'database': 'test_db'
 }
+
+### Rodando o Backend
+python app.py
 ````
